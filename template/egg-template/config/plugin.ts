@@ -1,5 +1,5 @@
-import { EggPlugin } from 'egg';
-import { join } from 'path';
+import {EggPlugin} from 'egg';
+import {join} from 'path';
 
 const plugin: EggPlugin = {
   cookie: {

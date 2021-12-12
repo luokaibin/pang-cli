@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { Command } = require('commander');
-const generatorEgg = require('./generator-egg');
+const generator = require('./generator');
 const program = new Command();
 program.usage(`<template-type> <project-name>
   初始化一个项目
@@ -15,8 +15,8 @@ const distributeTheOrder = (pkgs) => {
     process.exit(1)
   }
   const [type, name] = pkgs;
-  if (type === 'egg') {
-    generatorEgg(name);
+  if (['egg', 'react'].includes(type)) {
+    generator(type, name);
   }
 }
 distributeTheOrder(pkgs)

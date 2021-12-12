@@ -1,6 +1,6 @@
-import { Application } from 'egg';
-import * as goodid from 'goodid.js'
-import { join } from 'path';
+import {Application} from 'egg';
+import * as goodid from 'goodid.js';
+import {join} from 'path';
 
 export default {
   // demo 定义一个只读常量
@@ -15,9 +15,9 @@ export default {
   },
   /**
    * 生成8位短ID
-   * @returns id string
+   * @return id string
    */
   createId() {
     return goodid(8);
-  },
+  }
 };
