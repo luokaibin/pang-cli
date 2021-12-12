@@ -12,6 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": "https://github.com/luokaibin/pang-cli",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^8.1.0",

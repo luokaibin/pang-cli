@@ -4,7 +4,7 @@ const generator = require('./generator');
 const program = new Command();
 program.usage(`<template-type> <project-name>
   初始化一个项目
-  template-type 模版类型 支持 egg
+  template-type 模版类型 支持 egg react
   project-name 项目名称`)
 program.parse(process.argv);
 
