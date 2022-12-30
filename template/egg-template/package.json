@@ -44,7 +44,7 @@
     "@types/supertest": "^2.0.11",
     "autod": "^3.1.2",
     "autod-egg": "^1.1.0",
-    "egg-bin": "^4.16.4",
+    "egg-bin": "^5.9.0",
     "egg-ci": "^1.19.0",
     "egg-mock": "^3.26.0",
     "eslint": "^8.4.1",
