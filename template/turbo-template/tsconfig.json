@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./typings"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@element/*": [
+        "node_modules/@components/Element/*"
+      ],
+      "@icon/*": [
+        "node_modules/@images/icon/*"
+      ],
+      "@styleModules/*": [
+        "node_modules/@styles/modules/*"
+      ],
+      "@animations/*": [
+        "src/animations/*"
+      ],
+      "@newsImg/*": [
+        "node_modules/@images/news/*"
+      ],
+      "@invitationImages/*": [
+        "node_modules/@images/invitationImages/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

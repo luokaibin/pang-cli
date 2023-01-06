@@ -1,0 +1,17 @@
+# *
+User-agent: *
+Disallow: /*/wallet
+
+# Googlebot
+User-agent: Googlebot
+Disallow: /*/wallet
+
+# Host
+Host: https://www.kikitrade.com
+
+# Sitemaps
+Sitemap: https://www.kikitrade.com/sitemap.xml
+Sitemap: https://www.kikitrade.com/server-sitemap-zh.xml
+Sitemap: https://www.kikitrade.com/server-sitemap-hk.xml
+Sitemap: https://www.kikitrade.com/server-sitemap-topics.xml
+Sitemap: https://www.kikitrade.com/server-sitemap-market.xml

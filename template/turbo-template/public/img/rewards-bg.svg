@@ -1,0 +1,38 @@
+<svg width="865px" height="858px" viewBox="0 0 865 858" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-49.1%" y="-49.1%" width="198.3%" height="198.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="32" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-49.1%" y="-49.1%" width="198.3%" height="198.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="32" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-49.1%" y="-49.1%" width="198.3%" height="198.3%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="32" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-37.2%" y="-37.2%" width="174.4%" height="174.4%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="32" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-37.2%" y="-37.2%" width="174.4%" height="174.4%" filterUnits="objectBoundingBox" id="filter-5">
+            <feGaussianBlur stdDeviation="32" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <filter x="-37.2%" y="-37.2%" width="174.4%" height="174.4%" filterUnits="objectBoundingBox" id="filter-6">
+            <feGaussianBlur stdDeviation="32" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.515950521">
+        <g id="任务二备份" transform="translate(352.000000, 295.000000)">
+            <g id="编组-6" transform="translate(-220.019179, -162.979950)">
+                <g id="编组-4" transform="translate(300.796009, 311.120196) rotate(-150.000000) translate(-300.796009, -311.120196) translate(131.698529, 149.395351)">
+                    <ellipse id="椭圆形" fill="#28395B" filter="url(#filter-1)" cx="138.032223" cy="97.6754014" rx="97.6794155" ry="97.6754014"></ellipse>
+                    <ellipse id="椭圆形备份-4" fill="#372756" filter="url(#filter-2)" cx="240.515544" cy="187.344622" rx="97.6794155" ry="97.6754014"></ellipse>
+                    <ellipse id="椭圆形备份-5" fill="#453128" filter="url(#filter-3)" cx="97.6794155" cy="225.774289" rx="97.6794155" ry="97.6754014"></ellipse>
+                </g>
+                <g id="编组-4" opacity="0.430129278" transform="translate(300.519179, 296.979950) rotate(-150.000000) translate(-300.519179, -296.979950) translate(76.984642, 83.114767)">
+                    <ellipse id="椭圆形" fill="#28395B" filter="url(#filter-4)" cx="182.01626" cy="129.059629" rx="129.064933" ry="129.059629"></ellipse>
+                    <ellipse id="椭圆形备份-4" fill="#372756" filter="url(#filter-5)" cx="318.004141" cy="248.017881" rx="129.064933" ry="129.059629"></ellipse>
+                    <ellipse id="椭圆形备份-5" fill="#453128" filter="url(#filter-6)" cx="129.064933" cy="298.670738" rx="129.064933" ry="129.059629"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

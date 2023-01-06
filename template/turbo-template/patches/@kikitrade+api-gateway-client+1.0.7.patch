@@ -1,0 +1,51 @@
+diff --git a/node_modules/@kikitrade/api-gateway-client/dist/ws.js b/node_modules/@kikitrade/api-gateway-client/dist/ws.js
+index 49384a0..c10eae3 100644
+--- a/node_modules/@kikitrade/api-gateway-client/dist/ws.js
++++ b/node_modules/@kikitrade/api-gateway-client/dist/ws.js
+@@ -1,6 +1,14 @@
+ import { v4 } from 'uuid';
+ import { Accept_JSON, Content_Type_Form_Data, Content_Type_Json_Data, seqInc, Util } from './util';
+ import url, { parse } from 'url';
++var WebSocketClient = require('websocket').client;
++var websocket;
++if(typeof WebSocket === 'undefined'){
++    websocket = WebSocketClient
++} else {
++    websocket = WebSocket
++}
++
+ class WS {
+     constructor(config) {
+         this.registered = false;
+@@ -19,7 +27,7 @@ class WS {
+         this.ws = null;
+     }
+     do_send(msg) {
+-        if (this.ws && this.ws.readyState == WebSocket.OPEN) {
++        if (this.ws && this.ws.readyState == websocket.OPEN) {
+             try {
+                 this.ws.send(msg);
+             }
+@@ -29,19 +37,19 @@ class WS {
+         }
+     }
+     register(update, deviceId, bodyInJson) {
+-        this.ws = new WebSocket(this.config.url);
++        this.ws = new websocket(this.config.url);
+         let that = this;
+         this.ws.onopen = function open() {
+             console.log('open:');
+             that.do_send('RG#' + deviceId);
+         };
+         this.ws.onmessage = function incoming(event) {
+-            console.log('data:', event.data);
++            // console.log('data:', event.data);
+             if (event.data.startsWith('NF#')) {
+                 try {
+                     let msg = JSON.parse(event.data.substr(3));
+                     if (msg) {
+-                        console.log('receiving ' + msg);
++                        // console.log('receiving ' + msg);
+                         update(msg);
+                     }
+                 }

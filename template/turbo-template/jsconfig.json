@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@element/*": [
+        "node_modules/@components/Element/*"
+      ],
+      "@icon/*": [
+        "node_modules/@images/icon/*"
+      ],
+      "@styleModules/*": [
+        "node_modules/@styles/modules/*"
+      ],
+      "@animations/*": [
+        "src/animations/*"
+      ],
+      "@newsImg/*": [
+        "node_modules/@images/news/*"
+      ],
+      "@invitationImages/*": [
+        "node_modules/@images/invitationImages/*"
+      ]
+    }
+  }
+}

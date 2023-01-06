@@ -5,15 +5,17 @@ const testMkdir = require('../utils/testMkdir');
 const ejs = require('ejs');
 const { execSync } = require('child_process');
 
-const run = async (type, name) => {
-  testPath(name)
+const run = async (type, name,initPath) => {
+  const pathname = type == 'turbo' ? `apps/${name}` : name
+  testPath(pathname)
   const fileList = pangFs.readDir('./', 'list');
   const isMkdir = !fileList.every(testMkdir)
+ 
   if (isMkdir) {
-    pangFs.mkdir(name);
+    pangFs.mkdir(pathname);
   }
   const sourcePath = path.join(__dirname, `../template/${type}-template`);
-  const targetPath = path.join(pangFs.getCurrPath(), isMkdir ? name : './')
+  const targetPath = path.join(pangFs.getCurrPath(), isMkdir ? pathname : './')
   pangFs.copyDirOrFile(sourcePath, targetPath, (content, filePath, fileName) => {
     if (fileName === 'package.json') {
       const renderStr = ejs.render(content.toString(), {projectName: name})
@@ -21,6 +23,7 @@ const run = async (type, name) => {
     }
     return content
   })
+  if(type == 'turbo') return
   execSync('npm install', {cwd: targetPath, stdio: 'inherit'})
 }
 module.exports = run;

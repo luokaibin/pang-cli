@@ -15,7 +15,7 @@ const distributeTheOrder = (pkgs) => {
     process.exit(1)
   }
   const [type, name] = pkgs;
-  if (['egg', 'react'].includes(type)) {
+  if (['egg', 'react','turbo'].includes(type)) {
     generator(type, name);
   }
 }
