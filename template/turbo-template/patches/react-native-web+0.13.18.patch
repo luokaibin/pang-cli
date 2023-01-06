@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-web/dist/cjs/exports/Text/index.js b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+index 4558c77..2b5e3a3 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/Text/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+@@ -177,7 +177,7 @@ var classes = _css.default.create({
+     boxSizing: 'border-box',
+     color: 'black',
+     display: 'inline',
+-    font: '14px System',
++    font: '14px DINPro',
+     margin: 0,
+     padding: 0,
+     whiteSpace: 'pre-wrap',

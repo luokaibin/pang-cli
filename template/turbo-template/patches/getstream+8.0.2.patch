@@ -1,0 +1,19 @@
+diff --git a/node_modules/getstream/lib/client.js b/node_modules/getstream/lib/client.js
+index 0f46651..7a7a724 100644
+--- a/node_modules/getstream/lib/client.js
++++ b/node_modules/getstream/lib/client.js
+@@ -556,8 +556,13 @@ var StreamClient = /*#__PURE__*/function () {
+         headers: _objectSpread({
+           'X-Stream-Client': this.userAgent(),
+           'stream-auth-type': 'jwt',
++          'jwt_token': token,
++          'device_type': 'web',
++          version:'',
++          'device_id': typeof window !=='undefined' ? window.deviceId || '' : '',
++          customer_id: typeof window !=='undefined' ? window.userId || '' : '',
+           Authorization: token
+-        }, kwargs.headers || {})
++        }, ['pre', 'prodgreen', 'beta1'].includes(process.env.NEXT_PUBLIC_API_ENV) ? { traffic: 'blue' } : {}, kwargs.headers || {})
+       }, kwargs.axiosOptions || {});
+     }
+     /**

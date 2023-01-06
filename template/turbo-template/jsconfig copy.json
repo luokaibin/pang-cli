@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@utils/*": [
+        "node_modules/utils/*"
+      ],
+      "@type/*": [
+        "node_modules/@type/*"
+      ],
+      "@constants/*": [
+        "node_modules/constants/*"
+      ],
+      "@element/*": [
+        "src/components/Element/*"
+      ],
+      "@icon/*": [
+        "node_modules/@images/icon/*"
+      ],
+      "@images/*": [
+        "node_modules/@images/*"
+      ],
+      "@widget/*": [
+        "src/widget/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@styleModules/*": [
+        "src/styles/modules/*"
+      ],
+      "@api/*": [
+        "node_modules/api/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "@lib/*": [
+        "node_modules/lib/*"
+      ],
+      "@animations/*": [
+        "src/animations/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@newsImg/*": [
+        "node_modules/@images/news/*"
+      ],
+      "@invitationImages/*": [
+        "node_modules/@images/invitationImages/*"
+      ]
+    }
+  }
+}

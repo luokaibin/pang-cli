@@ -1,0 +1,86 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./typings"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@utils/*": [
+        "node_modules/utils/*"
+      ],
+      "@constants/*": [
+        "node_modules/constants/*"
+      ],
+      "@element/*": [
+        "src/components/Element/*"
+      ],
+      "@icon/*": [
+        "node_modules/@images/icon/*"
+      ],
+      "@images/*": [
+        "node_modules/@images/*"
+      ],
+      "@widget/*": [
+        "src/widget/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@styleModules/*": [
+        "src/styles/modules/*"
+      ],
+      "@api/*": [
+        "node_modules/api/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "@lib/*": [
+        "node_modules/lib/*"
+      ],
+      "@animations/*": [
+        "src/animations/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@newsImg/*": [
+        "node_modules/@images/news/*"
+      ],
+      "@invitationImages/*": [
+        "node_modules/@images/invitationImages/*"
+      ],
+      "@type/*": [
+        "src/@type/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,272 @@
+diff --git a/node_modules/react-verification-code-input/dist/index.d.ts b/node_modules/react-verification-code-input/dist/index.d.ts
+index 3279169..71ad31d 100644
+--- a/node_modules/react-verification-code-input/dist/index.d.ts
++++ b/node_modules/react-verification-code-input/dist/index.d.ts
+@@ -1,9 +1,10 @@
+ import React from 'react';
+ 
+-interface ReactCodeInputProps {
+-  type?: 'text' | 'number';
++export interface ReactCodeInputProps {
++  type?: 'text' | 'number' | 'password';
+   onChange?: (val: string) => void;
+   onComplete?: (val: string) => void;
++  inputMode?: HTMLInputElement['inputMode'];
+   fields?: number;
+   loading?: boolean;
+   title?: string;
+@@ -18,7 +19,7 @@ interface ReactCodeInputProps {
+ }
+ 
+ declare class ReactCodeInput extends React.Component<ReactCodeInputProps> {
+-  __clearvalues__ : () => void;
++  __clearvalues__: () => void;
+ }
+ 
+ export default ReactCodeInput;
+diff --git a/node_modules/react-verification-code-input/dist/index.es.js b/node_modules/react-verification-code-input/dist/index.es.js
+index a4d72ce..0d096a5 100644
+--- a/node_modules/react-verification-code-input/dist/index.es.js
++++ b/node_modules/react-verification-code-input/dist/index.es.js
+@@ -1,8 +1,8 @@
+ import React, { Component } from 'react';
+ import PropTypes from 'prop-types';
+ 
+-function styleInject(css, ref) {
+-  if ( ref === void 0 ) ref = {};
++function styleInject (css, ref) {
++  if (ref === void 0) ref = {};
+   var insertAt = ref.insertAt;
+ 
+   if (!css || typeof document === 'undefined') { return; }
+@@ -39,7 +39,7 @@ var classCallCheck = function (instance, Constructor) {
+ };
+ 
+ var createClass = function () {
+-  function defineProperties(target, props) {
++  function defineProperties (target, props) {
+     for (var i = 0; i < props.length; i++) {
+       var descriptor = props[i];
+       descriptor.enumerable = descriptor.enumerable || false;
+@@ -98,10 +98,12 @@ var KEY_CODE = {
+   down: 40
+ };
+ 
++var numInputs = ['number', 'password']
++
+ var ReactCodeInput = function (_Component) {
+   inherits(ReactCodeInput, _Component);
+ 
+-  function ReactCodeInput(props) {
++  function ReactCodeInput (props) {
+     classCallCheck(this, ReactCodeInput);
+ 
+     var _this = possibleConstructorReturn(this, (ReactCodeInput.__proto__ || Object.getPrototypeOf(ReactCodeInput)).call(this, props));
+@@ -109,7 +111,7 @@ var ReactCodeInput = function (_Component) {
+     _initialiseProps.call(_this);
+ 
+     var fields = props.fields,
+-        values = props.values;
++      values = props.values;
+ 
+     var vals = void 0;
+     var autoFocusIndex = 0;
+@@ -152,21 +154,21 @@ var ReactCodeInput = function (_Component) {
+ 
+   createClass(ReactCodeInput, [{
+     key: 'render',
+-    value: function render() {
++    value: function render () {
+       var _this2 = this;
+-
+       var _state = this.state,
+-          values = _state.values,
+-          autoFocusIndex = _state.autoFocusIndex;
++        values = _state.values,
++        autoFocusIndex = _state.autoFocusIndex;
+       var _props = this.props,
+-          loading = _props.loading,
+-          title = _props.title,
+-          fieldHeight = _props.fieldHeight,
+-          fieldWidth = _props.fieldWidth,
+-          fields = _props.fields,
+-          autoFocus = _props.autoFocus,
+-          className = _props.className,
+-          type = _props.type;
++        loading = _props.loading,
++        title = _props.title,
++        fieldHeight = _props.fieldHeight,
++        fieldWidth = _props.fieldWidth,
++        fields = _props.fields,
++        autoFocus = _props.autoFocus,
++        className = _props.className,
++        inputMode = _props.inputMode,
++        type = _props.type;
+ 
+       var INPUT_STYLE = {
+         width: fieldWidth,
+@@ -195,7 +197,8 @@ var ReactCodeInput = function (_Component) {
+           values.map(function (value, index) {
+             return React.createElement('input', {
+               type: type === 'number' ? 'tel' : type,
+-              pattern: type === 'number' ? '[0-9]*' : null,
++              pattern: numInputs.includes(type) ? '[0-9]*' : null,
++              inputMode,
+               autoFocus: autoFocus && index === autoFocusIndex,
+               style: INPUT_STYLE,
+               key: _this2.id + '-' + index,
+@@ -268,7 +271,7 @@ ReactCodeInput.defaultProps = {
+   placeholder: []
+ };
+ 
+-var _initialiseProps = function _initialiseProps() {
++var _initialiseProps = function _initialiseProps () {
+   var _this3 = this;
+ 
+   this.__clearvalues__ = function () {
+@@ -281,9 +284,9 @@ var _initialiseProps = function _initialiseProps() {
+   this.triggerChange = function () {
+     var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this3.state.values;
+     var _props2 = _this3.props,
+-        onChange = _props2.onChange,
+-        onComplete = _props2.onComplete,
+-        fields = _props2.fields;
++      onChange = _props2.onChange,
++      onComplete = _props2.onComplete,
++      fields = _props2.fields;
+ 
+     var val = values.join('');
+     onChange && onChange(val);
+@@ -294,11 +297,11 @@ var _initialiseProps = function _initialiseProps() {
+ 
+   this.onChange = function (e) {
+     var index = parseInt(e.target.dataset.id);
+-    if (_this3.props.type === 'number') {
++    if (numInputs.includes(_this3.props.type)) {
+       e.target.value = e.target.value.replace(/[^\d]/gi, '');
+     }
+     // this.handleKeys[index] = false;
+-    if (e.target.value === '' || _this3.props.type === 'number' && !e.target.validity.valid) {
++    if (e.target.value === '' || numInputs.includes(_this3.props.type) && !e.target.validity.valid) {
+       return;
+     }
+     var fields = _this3.props.fields;
+diff --git a/node_modules/react-verification-code-input/dist/index.js b/node_modules/react-verification-code-input/dist/index.js
+index 4a22a7f..7176538 100644
+--- a/node_modules/react-verification-code-input/dist/index.js
++++ b/node_modules/react-verification-code-input/dist/index.js
+@@ -6,8 +6,8 @@ var React = require('react');
+ var React__default = _interopDefault(React);
+ var PropTypes = _interopDefault(require('prop-types'));
+ 
+-function styleInject(css, ref) {
+-  if ( ref === void 0 ) ref = {};
++function styleInject (css, ref) {
++  if (ref === void 0) ref = {};
+   var insertAt = ref.insertAt;
+ 
+   if (!css || typeof document === 'undefined') { return; }
+@@ -44,7 +44,7 @@ var classCallCheck = function (instance, Constructor) {
+ };
+ 
+ var createClass = function () {
+-  function defineProperties(target, props) {
++  function defineProperties (target, props) {
+     for (var i = 0; i < props.length; i++) {
+       var descriptor = props[i];
+       descriptor.enumerable = descriptor.enumerable || false;
+@@ -106,7 +106,7 @@ var KEY_CODE = {
+ var ReactCodeInput = function (_Component) {
+   inherits(ReactCodeInput, _Component);
+ 
+-  function ReactCodeInput(props) {
++  function ReactCodeInput (props) {
+     classCallCheck(this, ReactCodeInput);
+ 
+     var _this = possibleConstructorReturn(this, (ReactCodeInput.__proto__ || Object.getPrototypeOf(ReactCodeInput)).call(this, props));
+@@ -114,7 +114,7 @@ var ReactCodeInput = function (_Component) {
+     _initialiseProps.call(_this);
+ 
+     var fields = props.fields,
+-        values = props.values;
++      values = props.values;
+ 
+     var vals = void 0;
+     var autoFocusIndex = 0;
+@@ -157,21 +157,22 @@ var ReactCodeInput = function (_Component) {
+ 
+   createClass(ReactCodeInput, [{
+     key: 'render',
+-    value: function render() {
++    value: function render () {
+       var _this2 = this;
+-
++      var numInputs = ['number', 'password']
+       var _state = this.state,
+-          values = _state.values,
+-          autoFocusIndex = _state.autoFocusIndex;
++        values = _state.values,
++        autoFocusIndex = _state.autoFocusIndex;
+       var _props = this.props,
+-          loading = _props.loading,
+-          title = _props.title,
+-          fieldHeight = _props.fieldHeight,
+-          fieldWidth = _props.fieldWidth,
+-          fields = _props.fields,
+-          autoFocus = _props.autoFocus,
+-          className = _props.className,
+-          type = _props.type;
++        loading = _props.loading,
++        title = _props.title,
++        fieldHeight = _props.fieldHeight,
++        fieldWidth = _props.fieldWidth,
++        fields = _props.fields,
++        autoFocus = _props.autoFocus,
++        className = _props.className,
++        inputModal = _props.inputModal,
++        type = _props.type;
+ 
+       var INPUT_STYLE = {
+         width: fieldWidth,
+@@ -183,6 +184,7 @@ var ReactCodeInput = function (_Component) {
+       var LOADING_STYLE = {
+         lineHeight: fieldHeight + 'px'
+       };
++
+       return React__default.createElement(
+         'div',
+         {
+@@ -199,8 +201,9 @@ var ReactCodeInput = function (_Component) {
+           { className: styles['react-code-input'] },
+           values.map(function (value, index) {
+             return React__default.createElement('input', {
+-              type: type === 'number' ? 'tel' : type,
+-              pattern: type === 'number' ? '[0-9]*' : null,
++              type: numInputs.includes(type) ? 'tel' : type,
++              pattern: numInputs.includes(type) ? '[0-9]*' : null,
++              inputModal,
+               autoFocus: autoFocus && index === autoFocusIndex,
+               style: INPUT_STYLE,
+               key: _this2.id + '-' + index,
+@@ -273,7 +276,7 @@ ReactCodeInput.defaultProps = {
+   placeholder: []
+ };
+ 
+-var _initialiseProps = function _initialiseProps() {
++var _initialiseProps = function _initialiseProps () {
+   var _this3 = this;
+ 
+   this.__clearvalues__ = function () {
+@@ -286,9 +289,9 @@ var _initialiseProps = function _initialiseProps() {
+   this.triggerChange = function () {
+     var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this3.state.values;
+     var _props2 = _this3.props,
+-        onChange = _props2.onChange,
+-        onComplete = _props2.onComplete,
+-        fields = _props2.fields;
++      onChange = _props2.onChange,
++      onComplete = _props2.onComplete,
++      fields = _props2.fields;
+ 
+     var val = values.join('');
+     onChange && onChange(val);
