@@ -1,22 +1,44 @@
 #!/usr/bin/env node
 const { Command } = require('commander');
+const inquirer = require('inquirer');
 const generator = require('./generator');
 const program = new Command();
-program.usage(`<template-type> <project-name>
-  初始化一个项目
-  template-type 模版类型 支持 egg react
-  project-name 项目名称`)
+
 program.parse(process.argv);
 
-const pkgs = program.args;
-const distributeTheOrder = (pkgs) => {
-  if (pkgs.length !== 2) {
-    program.outputHelp();
-    process.exit(1)
-  }
-  const [type, name] = pkgs;
-  if (['egg', 'react','turbo'].includes(type)) {
-    generator(type, name);
-  }
-}
-distributeTheOrder(pkgs)
+
+const questions = [
+  {
+    type: 'list',
+    name: 'type',
+    message: 'Please select templete type',
+    choices: [
+      'egg',
+      'react',
+      'turbo',
+     ],
+     default() {
+      return 'turbo';
+    },
+  },
+   {
+     type: 'input',
+     name: 'name',
+     message: "Please select templete name",
+     default() {
+       return 'home';
+     },
+     validate(value) {
+      if (value) {
+        return true;
+      }
+
+      return 'Please select templete name';
+    },
+   },
+ ];
+ 
+ inquirer.prompt(questions).then((answers) => {
+   const { type,name } = answers
+   generator(type,name)
+ });

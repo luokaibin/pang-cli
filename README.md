@@ -32,7 +32,7 @@ npx pang init <template-type> <project-name>
 
 | 参数          | 说明                     |
 | ------------- | ------------------------ |
-| template-type | 模版类型，目前支持 egg，react |
+| template-type | 模版类型，目前支持 egg，react,turbo |
 | project-name  | 项目名称                 |
 
 ## 特点

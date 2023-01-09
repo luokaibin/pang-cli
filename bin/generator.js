@@ -7,7 +7,7 @@ const { execSync } = require('child_process');
 
 const run = async (type, name,initPath) => {
   const pathname = type == 'turbo' ? `apps/${name}` : name
-  testPath(pathname)
+  testPath(name,type)
   const fileList = pangFs.readDir('./', 'list');
   const isMkdir = !fileList.every(testMkdir)
  
